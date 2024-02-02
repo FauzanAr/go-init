@@ -8,9 +8,11 @@ import (
 	"time"
 
 	"github.com/FauzanAr/go-init/config"
+	"github.com/FauzanAr/go-init/modules"
 	mysql "github.com/FauzanAr/go-init/pkg/database"
 	"github.com/FauzanAr/go-init/pkg/logger"
 	"github.com/FauzanAr/go-init/pkg/middleware"
+	"github.com/FauzanAr/go-init/pkg/validator"
 	"github.com/FauzanAr/go-init/pkg/wrapper"
 
 	"github.com/labstack/echo/v4"
@@ -26,6 +28,7 @@ func main() {
 
 	server := echo.New()
 	server.Use(middleware.EchoRequestTrace(log))
+	server.Validator = validator.NewValidator()
 
 	mysqlDb := mysql.NewMysql(ctx, conf.Mysql, log)
 	mysql, err := mysqlDb.Connect()
@@ -51,6 +54,8 @@ func main() {
 	server.GET("/", func(c echo.Context) error {
 		return wrapper.SendSuccessResponse(c, "Success", map[string]string{"message": "Server running"}, 200)
 	})
+
+	modules.NewModules(ctx, server, mysql, log).Init()
 
 	server.Logger.Fatal(server.Start(":" + conf.AppPort))
 }

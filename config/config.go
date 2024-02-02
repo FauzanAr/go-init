@@ -13,6 +13,7 @@ type Config struct {
 	AppEnviroment string `env:"APP_ENVIROMENT,required"`
 	AppPort       string `env:"APP_PORT,required"`
 	Mysql         MySql
+	Jwt           Jwt
 }
 
 type MySql struct {
@@ -21,6 +22,12 @@ type MySql struct {
 	Password string `env:"MYSQL_PASSWORD,required"`
 	Username string `env:"MYSQL_USERNAME,required"`
 	Name     string `env:"MYSQL_NAME,required"`
+}
+
+type Jwt struct {
+	SecretKey           string `env:"JWT_SECRET_KEY,required"`
+	AccessTokenExpired  int    `env:"JWT_ACCESS_TOKEN_EXPIRED_HOURS,required"`
+	RefreshTokenExpired int    `env:"JWT_REFRESH_TOKEN_EXPIRED_DAYS,required"`
 }
 
 func LoadEnv(ctx context.Context, log logger.Logger) (Config, error) {
