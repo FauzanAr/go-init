@@ -26,7 +26,7 @@ This project was using SOLID principles that might be more easier to scale up or
 What we're using:
 - Go v1.19.13.
 - MySql v8.0
-- Echo V4
+- Echo V4 (Go to branch feat/impl/echo to know how to implement)
 - Golang Migrate
 
 ## Getting Started
