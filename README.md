@@ -8,9 +8,7 @@ Go-Init.
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
-- [Configuration](#configuration)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -50,6 +48,6 @@ go run main.go
 
 ```
 
-## Contirbuting
+## Contributing
 
 Thank you for considering contributing to this project! Contributions are welcome from everyone, regardless of your level of experience :).
