@@ -1,6 +1,6 @@
 # Project Title
 
-A brief description of your project.
+Go-Init.
 
 ## Table of Contents
 
